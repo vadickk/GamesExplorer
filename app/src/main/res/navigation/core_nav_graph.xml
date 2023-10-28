@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/gamesFragment"
-        android:name="com.lbettersuraiukrae.gamesexplorer.screens.fragments.GamesFragment"
+        android:name="com.lbettersuraiukrae.gamesexplorer.ui_logic.ui.GamesFragment"
         android:label="GamesFragment"
         tools:layout="@layout/fragment_games">
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/gameDetailFragment"
-        android:name="com.lbettersuraiukrae.gamesexplorer.screens.fragments.GameDetailFragment"
+        android:name="com.lbettersuraiukrae.gamesexplorer.ui_logic.ui.GameDetailFragment"
         android:label="fragment_game_detail"
         tools:layout="@layout/fragment_game_detail" />
 </navigation>

@@ -1,7 +1,6 @@
-package com.lbettersuraiukrae.gamesexplorer.screens.fragments
+package com.lbettersuraiukrae.gamesexplorer.ui_logic.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,13 +8,13 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.lbettersuraiukrae.gamesexplorer.R
 import com.lbettersuraiukrae.gamesexplorer.databinding.FragmentGameDetailBinding
-import com.lbettersuraiukrae.gamesexplorer.screens.viewmodel.ApplicationViewModel
+import com.lbettersuraiukrae.gamesexplorer.viewmodel.CoreViewModel
 import com.squareup.picasso.Picasso
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class GameDetailFragment : Fragment() {
     private val binding by lazy { FragmentGameDetailBinding.inflate(layoutInflater) }
-    private val viewModel by viewModel<ApplicationViewModel>()
+    private val viewModel by viewModel<CoreViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,7 +23,7 @@ class GameDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val game = viewModel.gameDetail.value
+        val game = viewModel.gameEntityDetail.value
 
 
         Picasso.get().load(game?.thumbnail).placeholder(R.drawable.app_placeholder).into(binding.imageView)

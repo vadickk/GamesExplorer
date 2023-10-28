@@ -1,4 +1,4 @@
-package com.lbettersuraiukrae.gamesexplorer.screens.adapter
+package com.lbettersuraiukrae.gamesexplorer.ui_logic.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -6,22 +6,23 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.lbettersuraiukrae.gamesexplorer.R
 import com.lbettersuraiukrae.gamesexplorer.databinding.ItemGameBinding
-import com.lbettersuraiukrae.gamesexplorer.network.entities.Game
+import com.lbettersuraiukrae.gamesexplorer.internet.data.GameEntity
+import com.lbettersuraiukrae.gamesexplorer.tools.OnCountryClickListener
 import com.squareup.picasso.Picasso
 
-class GamesAdapter(
+class GamesRVAdapter(
     private val onCountryClickListener: OnCountryClickListener
-) : RecyclerView.Adapter<GamesAdapter.GamesViewHolder>() {
-    private val games = mutableListOf<Game>()
+) : RecyclerView.Adapter<GamesRVAdapter.GamesViewHolder>() {
+    private val gameEntities = mutableListOf<GameEntity>()
 
     inner class GamesViewHolder(private val binding: ItemGameBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(game: Game) {
-            Picasso.get().load(game.thumbnail).placeholder(R.drawable.app_placeholder).into(binding.ivGameAvatar)
-            binding.tvCreator.text = game.publisher
-            binding.tvTitle.text = game.title
-            binding.tvDescription.text = game.release_date
+        fun draw(gameEntity: GameEntity) {
+            Picasso.get().load(gameEntity.thumbnail).placeholder(R.drawable.app_placeholder).into(binding.ivGameAvatar)
+            binding.tvCreator.text = gameEntity.publisher
+            binding.tvTitle.text = gameEntity.title
+            binding.tvDescription.text = gameEntity.release_date
             binding.gameContainer.setOnClickListener {
-                onCountryClickListener.onClick(game)
+                onCountryClickListener.onClick(gameEntity)
             }
         }
     }
@@ -32,25 +33,21 @@ class GamesAdapter(
     }
 
     override fun onBindViewHolder(holder: GamesViewHolder, position: Int) {
-        holder.bind(games[position])
+        holder.draw(gameEntities[position])
     }
 
-    override fun getItemCount() = games.size
+    override fun getItemCount() = gameEntities.size
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setNewGames(newGames: List<Game>) {
-        games.clear()
-        games.addAll(newGames)
+    fun setNewGames(newGameEntities: List<GameEntity>) {
+        gameEntities.clear()
+        gameEntities.addAll(newGameEntities)
         notifyDataSetChanged()
     }
 
     @SuppressLint("NotifyDataSetChanged")
     fun shuffleGames() {
-        games.shuffle()
+        gameEntities.shuffle()
         notifyDataSetChanged()
     }
-}
-
-fun interface OnCountryClickListener {
-    fun onClick(game: Game)
 }

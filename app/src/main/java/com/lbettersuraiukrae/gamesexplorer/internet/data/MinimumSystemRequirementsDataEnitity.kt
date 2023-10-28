@@ -1,6 +1,6 @@
-package com.lbettersuraiukrae.gamesexplorer.network.entities
+package com.lbettersuraiukrae.gamesexplorer.internet.data
 
-data class MinimumSystemRequirements(
+data class MinimumSystemRequirementsDataEnitity(
     val graphics: String,
     val memory: String,
     val os: String,
