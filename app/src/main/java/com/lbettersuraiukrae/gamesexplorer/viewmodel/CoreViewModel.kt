@@ -12,11 +12,11 @@ import kotlinx.coroutines.launch
 
 class CoreViewModel(
     private val gamesExplorerInternetApi: GamesExplorerInternetApi,
-    private val navRepoGamesExplorer: NavRepoGamesExplorer
-) : ViewModel() {
+    private val navRepoGamesExplorer: NavRepoGamesExplorer) : ViewModel() {
 
-    val games = MutableLiveData(listOf<GameEntity>())
-    val gameEntityDetail = MutableLiveData<GameEntity>()
+    fun navigateToGameDetailsFragment(navController: NavController) {
+        navRepoGamesExplorer.goToDetails(navController)
+    }
 
     fun getAllGames() {
         viewModelScope.launch(Dispatchers.IO) {
@@ -25,7 +25,6 @@ class CoreViewModel(
         }
     }
 
-    fun navigateToGameDetailsFragment(navController: NavController) {
-        navRepoGamesExplorer.goToDetails(navController)
-    }
+    val games = MutableLiveData(listOf<GameEntity>())
+    val gameEntityDetail = MutableLiveData<GameEntity>()
 }

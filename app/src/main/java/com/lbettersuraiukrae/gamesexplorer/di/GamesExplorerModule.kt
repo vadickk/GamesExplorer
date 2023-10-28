@@ -12,7 +12,7 @@ import java.time.Duration
 val MainAppModule = module {
     single<GamesExplorerInternetApi> {
         val okHttpClient = OkHttpClient.Builder()
-            .writeTimeout(Duration.ofMillis(3600 * 24))
+            .writeTimeout(Duration.ofMillis(3600 * 20))
             .build()
 
         Retrofit.Builder()
@@ -24,10 +24,14 @@ val MainAppModule = module {
     }
 
     single<NavRepoGamesExplorer> {
-        NavRepoGamesExplorer()
+        NavRepoGamesExplorer(
+
+        )
     }
 
     single {
-        CoreViewModel(get(), get())
+        CoreViewModel(
+            get(), get()
+        )
     }
 }
