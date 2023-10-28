@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Games Explorer</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="shuffle_games">Shuffle Games</string>
+    <string name="gta_v">GTA V</string>
+    <string name="rockstar_games">Rockstar Games</string>
+    <string name="it_s_game_about_bla_bla_bla">It\'s game about bla-bla-bla</string>
+    <string name="_2022_01_02">2022–01-02</string>
+    <string name="race">Race</string>
+</resources>
